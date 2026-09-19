@@ -1,0 +1,14 @@
+# CodeIgniter 3 / Laragon
+RewriteEngine On
+
+# Do not rewrite existing files/directories.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+# Protect framework/application files.
+<FilesMatch "^(\.env|composer\.json|schema\.sql)$">
+    Require all denied
+</FilesMatch>
+
+Options -MultiViews

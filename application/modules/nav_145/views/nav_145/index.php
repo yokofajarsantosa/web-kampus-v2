@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><?= html_escape($page['title'] ?? '') ?></title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/site.css') ?>">
+    <style>
+        .page-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 20px
+        }
+
+        .page-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 15px 50px rgba(8, 55, 80, .08)
+        }
+
+        .page-title {
+            font-size: 42px;
+            color: #073b5b;
+            margin: 0 0 20px
+        }
+
+        .page-content {
+            font-size: 16px;
+            line-height: 1.85;
+            color: #425b67;
+            white-space: pre-line
+        }
+
+        .page-image {
+            max-width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 18px;
+            margin: 20px 0
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 22px;
+            text-decoration: none
+        }
+
+        .source {
+            margin-top: 28px;
+            padding: 15px;
+            background: #f2f8fb;
+            border-radius: 12px
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page-wrap"><a class="back" href="<?= base_url() ?>">← Kembali ke Beranda</a>
+        <article class="page-card">
+            <p class="eyebrow">STIFAR SEMARANG</p>
+            <h1 class="page-title"><?= html_escape($page['title'] ?? '') ?></h1><?php if (!empty($page['image_url'])): ?><img
+                    class="page-image" src="<?= html_escape($page['image_url']) ?>"
+                    alt="<?= html_escape($page['title'] ?? '') ?>"><?php endif; ?>
+            <div class="page-content"><?= nl2br(html_escape($page['content'] ?? '')) ?></div>
+            <?php if (!empty($page['source_url']) && filter_var($page['source_url'], FILTER_VALIDATE_URL)): ?>
+                <div class="source">Sumber / tautan terkait: <a href="<?= html_escape($page['source_url']) ?>" target="_blank"
+                        rel="noopener">Buka tautan</a></div><?php endif; ?>
+        </article>
+    </main>
+</body>
+
+</html>
